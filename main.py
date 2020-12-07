@@ -13,23 +13,25 @@
 #  under the License.
 
 from __future__ import unicode_literals
+from linebot.models import (
+    MessageEvent, TextMessage, TextSendMessage,
+)
+from linebot.exceptions import (
+    InvalidSignatureError
+)
+from linebot import (
+    LineBotApi, WebhookParser
+)
 
 import os
 import sys
 from argparse import ArgumentParser
 
 from flask import Flask, request, abort
-from linebot import (
-    LineBotApi, WebhookParser
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
-)
+from flask.logging import create_logger
 
 app = Flask(__name__)
+LOG = create_logger(app)
 
 # get channel_secret and channel_access_token from your environment variable
 channel_secret = os.getenv('f7f8aac1d964528176d599b1923e3dad', None)
@@ -52,7 +54,7 @@ def callback():
 
     # get request body as text
     body = request.get_data(as_text=True)
-    app.logger.info("Request body: " + body)
+    LOG.info("Request body: " + body)
 
     # parse webhook body
     try:
