@@ -43,7 +43,7 @@ def callback():
 def echo(event):
 
     # 排除line官方訊息
-    # if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
+    # if event != []:
     print(event.message.text)
     line_bot_api.reply_message(
         event.reply_token,
