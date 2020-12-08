@@ -5,8 +5,9 @@ from flask import Flask, request, abort
 from flask.logging import create_logger
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
-import configparser
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
+
+import configparser
 
 app = Flask(__name__)
 LOG = create_logger(app)
