@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 import os
 from flask import Flask, request, abort
-from flask.logging import create_logger
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
@@ -10,7 +9,6 @@ from linebot.models import MessageEvent, TextMessage, TextSendMessage
 import configparser
 
 app = Flask(__name__)
-LOG = create_logger(app)
 
 # LINE 聊天機器人的基本資料
 config = configparser.ConfigParser()
@@ -27,7 +25,7 @@ def callback():
     signature = request.headers['X-Line-Signature']
 
     body = request.get_data(as_text=True)
-    LOG.info("Request body: " + body)
+    app.logger.info("Request body: " + body)
 
     print(body)
 
@@ -45,12 +43,12 @@ def callback():
 def echo(event):
 
     # 排除line官方訊息
-    if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
-
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=event.message.text)
-        )
+    # if event.source.user_id != "Udeadbeefdeadbeefdeadbeefdeadbeef":
+    print(event.message.text)
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text)
+    )
 
 
 if __name__ == "__main__":
