@@ -1,0 +1,65 @@
+{
+    "type": "bubble",
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "text",
+                "text": "找不到相符的食物QQ",
+                "weight": "bold",
+                "size": "xl"
+            },
+            {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                    {
+                        "type": "text",
+                        "text": "很抱歉，資料庫裡找不到這個食物，是否要用別的關鍵字重新搜尋？",
+                        "wrap": true,
+                        "color": "#000000"
+                    }
+                ]
+            }
+        ]
+    },
+    "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+            {
+                "type": "button",
+                "style": "link",
+                "height": "sm",
+                "action": {
+                    "type": "message",
+                    "label": "重新搜尋",
+                    "text": "[紀錄熱量]"
+                }
+            },
+            {
+                "type": "button",
+                "style": "link",
+                "height": "sm",
+                "action": {
+                    "type": "message",
+                    "label": "自己建立食物資料！",
+                    "text": "[開始建立食物資料]"
+                }
+            },
+            {
+                "type": "spacer",
+                "size": "sm"
+            }
+        ],
+        "paddingAll": "xs",
+        "paddingTop": "xs",
+        "paddingBottom": "xs",
+        "paddingStart": "xs",
+        "paddingEnd": "xs"
+    }
+}
