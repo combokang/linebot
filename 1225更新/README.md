@@ -1,2 +1,2 @@
 修正bug和文字
-測試時webhook和資料庫連線字串記得改
+測試時webhook、config和資料庫連線字串記得改
